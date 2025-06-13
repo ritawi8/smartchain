@@ -1,0 +1,41 @@
+{
+	"name": "smartchain",
+	"version": "1.0.0",
+	"type": "module",
+	"main": "src/server.mjs",
+	"directories": {
+		"test": "tests"
+	},
+	"scripts": {
+		"test": "vitest",
+		"start": "node src/server.mjs",
+		"dev-node": "cross-env GENERATE_NODE_PORT='true' nodemon src/server.mjs",
+		"dev": "nodemon src/server.mjs"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ritawi8/smartchain.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ritawi8/smartchain/issues"
+	},
+	"homepage": "https://github.com/ritawi8/smartchain#readme",
+	"description": "",
+	"devDependencies": {
+		"cross-env": "^7.0.3",
+		"nodemon": "^3.1.10",
+		"supertest": "^7.1.1",
+		"vitest": "^3.2.3"
+	},
+	"dependencies": {
+		"dotenv": "^16.5.0",
+		"elliptic": "^6.6.1",
+		"express": "^5.1.0",
+		"mongoose": "^8.15.2",
+		"pubnub": "^9.6.0",
+		"uuid": "^11.1.0"
+	}
+}
