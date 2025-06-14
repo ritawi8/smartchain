@@ -1,4 +1,5 @@
 import { app } from './app.mjs';
+import mongoose from 'mongoose';
 
 let PORT = process.env.PORT || 3000;
 
@@ -10,3 +11,9 @@ if (process.env.GENERATE_NODE_PORT === 'true') {
 app.listen(PORT, () => {
 	console.log(`Servern körs på port ${PORT}`);
 });
+
+// Anslut till MongoDB
+mongoose
+	.connect(process.env.MONGO_URL)
+	.then(() => console.log('✅ Ansluten till MongoDB!'))
+	.catch((err) => console.error('❌ Fel vid anslutning till MongoDB:', err));
