@@ -1,4 +1,5 @@
 import { createHash } from '../../utilities/hash.mjs';
+import { GENESIS_BLOCK } from './genesis.mjs';
 
 export default class Block {
 	constructor({ timestamp, hash, lastHash, data }) {
@@ -8,14 +9,8 @@ export default class Block {
 		this.data = data;
 	}
 
-	// Skapa genesis-blocket (första blocket i kedjan)
 	static genesis() {
-		return new this({
-			timestamp: Date.now(),
-			hash: 'genesis-hash',
-			lastHash: '----',
-			data: 'Genesis Block',
-		});
+		return new this(GENESIS_BLOCK);
 	}
 
 	// Skapa ett nytt block baserat på det senaste blocket
