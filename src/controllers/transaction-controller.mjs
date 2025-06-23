@@ -25,3 +25,11 @@ export function mineTransactions({
 	// 5. Returnera det nya blocket
 	return newBlock;
 }
+
+export const addTransaction = (req, res) => {
+	res.json({ message: 'addTransaction fungerar!' });
+};
+
+export const listAllTransactions = (req, res) => {
+	res.json({ message: 'listAllTransactions fungerar!' });
+};
