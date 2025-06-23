@@ -1,5 +1,7 @@
 import { app } from './app.mjs';
 import mongoose from 'mongoose';
+import Blockchain from './models/blockchain/Blockchain.mjs';
+import TransactionPool from './models/wallet/TransactionPool.mjs';
 
 let PORT = process.env.PORT || 3000;
 
