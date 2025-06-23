@@ -1,5 +1,6 @@
 import Transaction from '../models/wallet/Transaction.mjs';
 import { transactionPool } from '../models/wallet/TransactionPool.mjs';
+import { blockChain } from '../server.mjs';
 
 export const mineTransactions = (req, res) => {
 	// Hämta instanserna direkt från importerna
@@ -14,7 +15,7 @@ export const mineTransactions = (req, res) => {
 
 	// Skapa nytt block med alla transaktioner + belöning
 	const blockData = [...transactions, rewardTx];
-	const newBlock = blockchain.addBlock(blockData);
+	const newBlock = blockChain.addBlock(blockData);
 
 	// Töm transaktionspoolen
 	transactionPool.clear();
@@ -24,7 +25,20 @@ export const mineTransactions = (req, res) => {
 };
 
 export const addTransaction = (req, res) => {
-	res.json({ message: 'addTransaction fungerar!' });
+	const { from, to, amount } = req.body;
+
+	// Enkel validering
+	if (!from || !to || typeof amount !== 'number') {
+		return res.status(400).json({ message: 'Felaktig data' });
+	}
+
+	// Skapa ny transaktion
+	const transaction = new Transaction({ from, to, amount });
+
+	// Lägg till i poolen
+	transactionPool.addTransaction(transaction);
+
+	res.status(201).json({ message: 'Transaktion tillagd!', transaction });
 };
 
 export const listAllTransactions = (req, res) => {
