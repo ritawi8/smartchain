@@ -1,6 +1,6 @@
 import Transaction from './Transaction.mjs';
 
-export default class TransactionPool {
+export class TransactionPool {
 	constructor() {
 		this.transactions = [];
 	}
@@ -25,3 +25,5 @@ export default class TransactionPool {
 		return this.transactions.some((tx) => tx.id === id);
 	}
 }
+
+export const transactionPool = new TransactionPool();

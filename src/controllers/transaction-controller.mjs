@@ -1,30 +1,27 @@
 import Transaction from '../models/wallet/Transaction.mjs';
+import { transactionPool } from '../models/wallet/TransactionPool.mjs';
 
-export function mineTransactions({
-	blockchain,
-	transactionPool,
-	minerAddress,
-}) {
-	// 1. Hämta alla transaktioner från poolen
+export const mineTransactions = (req, res) => {
+	// Hämta instanserna direkt från importerna
 	const transactions = transactionPool.getTransactions();
 
 	if (transactions.length === 0) {
-		return null; // Inget att mine:a
+		return res.status(400).json({ message: 'Inga transaktioner att mine:a' });
 	}
 
-	// 2. Skapa belöningstransaktion
-	const rewardTx = Transaction.reward(minerAddress);
+	// Skapa belöningstransaktion
+	const rewardTx = Transaction.reward('MINER_ADDRESS'); // byt ut mot riktig adress
 
-	// 3. Skapa nytt block med alla transaktioner + belöning
+	// Skapa nytt block med alla transaktioner + belöning
 	const blockData = [...transactions, rewardTx];
 	const newBlock = blockchain.addBlock(blockData);
 
-	// 4. Töm transaktionspoolen
+	// Töm transaktionspoolen
 	transactionPool.clear();
 
-	// 5. Returnera det nya blocket
-	return newBlock;
-}
+	// Returnera det nya blocket
+	return res.json({ block: newBlock });
+};
 
 export const addTransaction = (req, res) => {
 	res.json({ message: 'addTransaction fungerar!' });

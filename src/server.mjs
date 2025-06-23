@@ -3,10 +3,9 @@ import mongoose from 'mongoose';
 import blockchainRoutes from './routes/blockchain-routes.mjs';
 import transactionRoutes from './routes/transaction-routes.mjs';
 import Blockchain from './models/blockchain/Blockchain.mjs';
-import TransactionPool from './models/wallet/TransactionPool.mjs';
+import { transactionPool } from './models/wallet/TransactionPool.mjs';
 
 export const blockChain = new Blockchain();
-export const transactionPool = new TransactionPool();
 
 const DEFAULT_PORT = 3000;
 const ROOT_NODE = `http://localhost:${DEFAULT_PORT}`;
