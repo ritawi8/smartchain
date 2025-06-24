@@ -1,5 +1,5 @@
 import { blockChain } from '../server.mjs';
-import BlockModel from '../models/BlockModel.mjs';
+import BlockModel from '../models/blockchain/BlockModel.mjs';
 
 export const listAllBlocks = (req, res) => {
 	res.status(200).json({ success: true, data: blockChain.chain });
