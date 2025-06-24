@@ -5,6 +5,8 @@ import transactionRoutes from './routes/transaction-routes.mjs';
 import Blockchain from './models/blockchain/Blockchain.mjs';
 import { transactionPool } from './models/wallet/TransactionPool.mjs';
 import PubSub from './pubsub.mjs';
+import userRoutes from './auth/user-routes.mjs';
+import User from './auth/UserModel.mjs';
 
 export const blockChain = new Blockchain();
 
@@ -19,6 +21,7 @@ if (process.env.GENERATE_NODE_PORT === 'true') {
 
 app.use('/api/blocks', blockchainRoutes);
 app.use('/api/wallet', transactionRoutes);
+app.use('/api/users', userRoutes);
 
 // Synkronisering mellan noder (valfritt, kan kommenteras bort om du inte kör flera noder)
 const synchronize = async () => {
