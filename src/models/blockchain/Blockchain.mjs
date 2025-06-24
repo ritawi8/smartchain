@@ -47,4 +47,16 @@ export default class Blockchain {
 		}
 		return false;
 	}
+
+	// Hämta saldo för en adress
+	getBalanceOfAddress(address) {
+		let balance = 0;
+		for (const block of this.chain) {
+			for (const tx of block.data) {
+				if (tx.from === address) balance -= tx.amount;
+				if (tx.to === address) balance += tx.amount;
+			}
+		}
+		return balance;
+	}
 }

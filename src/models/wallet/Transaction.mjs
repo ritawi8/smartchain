@@ -9,15 +9,27 @@ export default class Transaction {
 		this.timestamp = Date.now();
 	}
 
-	// Enkel validering: beloppet måste vara positivt och det måste finnas avsändare och mottagare
-	static validate(transaction) {
-		return (
-			transaction &&
-			transaction.from &&
-			transaction.to &&
-			typeof transaction.amount === 'number' &&
-			transaction.amount > 0
-		);
+	// Enkel validering: beloppet måste vara positivt, det måste finnas avsändare och mottagare, och avsändaren måste ha tillräckligt saldo
+	static validate(transaction, blockchain) {
+		if (
+			!transaction ||
+			!transaction.from ||
+			!transaction.to ||
+			typeof transaction.amount !== 'number' ||
+			transaction.amount <= 0
+		) {
+			return false;
+		}
+
+		// Kontrollera saldo (ej för belöningstransaktioner)
+		if (transaction.from !== 'BLOCKCHAIN_REWARD') {
+			const balance = blockchain.getBalanceOfAddress(transaction.from);
+			if (balance < transaction.amount) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	// Skapa en belöningstransaktion till minern
