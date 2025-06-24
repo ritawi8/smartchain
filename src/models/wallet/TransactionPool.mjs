@@ -7,7 +7,9 @@ export class TransactionPool {
 
 	// Lägg till en transaktion i poolen
 	addTransaction(transaction) {
-		this.transactions.push(transaction);
+		if (!this.transactionExists(transaction.id)) {
+			this.transactions.push(transaction);
+		}
 	}
 
 	// Ta bort alla transaktioner (t.ex. efter mining)

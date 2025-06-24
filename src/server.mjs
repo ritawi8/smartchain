@@ -4,6 +4,7 @@ import blockchainRoutes from './routes/blockchain-routes.mjs';
 import transactionRoutes from './routes/transaction-routes.mjs';
 import Blockchain from './models/blockchain/Blockchain.mjs';
 import { transactionPool } from './models/wallet/TransactionPool.mjs';
+import PubSub from './pubsub.mjs';
 
 export const blockChain = new Blockchain();
 
@@ -53,3 +54,6 @@ mongoose
 	.connect(process.env.MONGO_URL)
 	.then(() => console.log('✅ Ansluten till MongoDB!'))
 	.catch((err) => console.error('❌ Fel vid anslutning till MongoDB:', err));
+
+const pubsub = new PubSub({ blockchain: blockChain, transactionPool });
+export { pubsub };

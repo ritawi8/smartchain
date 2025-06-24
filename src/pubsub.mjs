@@ -6,6 +6,8 @@ dotenv.config();
 const pubnub = new PubNub({
 	publishKey: process.env.PUBNUB_PUBLISH_KEY,
 	subscribeKey: process.env.PUBNUB_SUBSCRIBE_KEY,
+	userId:
+		process.env.PUBNUB_USER_ID || 'node-' + Math.floor(Math.random() * 10000),
 });
 
 const CHANNELS = {

@@ -1,7 +1,8 @@
 import Transaction from '../models/wallet/Transaction.mjs';
 import { transactionPool } from '../models/wallet/TransactionPool.mjs';
 import { blockChain } from '../server.mjs';
-import BlockModel from '../models/BlockModel.mjs'; // justera sökvägen om det behövs
+import BlockModel from '../models/BlockModel.mjs';
+import { pubsub } from '../server.mjs';
 
 export const mineTransactions = async (req, res) => {
 	try {
@@ -47,9 +48,12 @@ export const addTransaction = (req, res) => {
 	}
 
 	transactionPool.addTransaction(transaction);
+	pubsub.broadcastTransaction(transaction);
+
 	res.status(201).json({ message: 'Transaktion tillagd!', transaction });
 };
 
 export const listAllTransactions = (req, res) => {
-	res.json({ message: 'listAllTransactions fungerar!' });
+	const transactions = transactionPool.getTransactions();
+	res.json({ transactions });
 };
