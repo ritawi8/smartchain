@@ -7,6 +7,7 @@ import { transactionPool } from './models/wallet/TransactionPool.mjs';
 import PubSub from './pubsub.mjs';
 import userRoutes from './auth/user-routes.mjs';
 import User from './auth/UserModel.mjs';
+import { connectDB } from './database/connection.mjs';
 
 export const blockChain = new Blockchain();
 
@@ -53,10 +54,7 @@ app.listen(PORT, () => {
 });
 
 // Anslut till MongoDB
-mongoose
-	.connect(process.env.MONGO_URL)
-	.then(() => console.log('✅ Ansluten till MongoDB!'))
-	.catch((err) => console.error('❌ Fel vid anslutning till MongoDB:', err));
+await connectDB();
 
 const pubsub = new PubSub({ blockchain: blockChain, transactionPool });
 export { pubsub };
