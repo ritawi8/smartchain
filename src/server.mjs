@@ -1,12 +1,10 @@
 import { app } from './app.mjs';
-import mongoose from 'mongoose';
 import blockchainRoutes from './routes/blockchain-routes.mjs';
 import transactionRoutes from './routes/transaction-routes.mjs';
 import Blockchain from './models/blockchain/Blockchain.mjs';
 import { transactionPool } from './models/wallet/TransactionPool.mjs';
 import PubSub from './pubsub.mjs';
 import userRoutes from './auth/user-routes.mjs';
-import User from './auth/UserModel.mjs';
 import { connectDB } from './database/connection.mjs';
 
 export const blockChain = new Blockchain();
