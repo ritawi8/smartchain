@@ -12,8 +12,8 @@ const StartPage = () => {
 				and your identity.
 			</h2>
 
-			<button onClick={() => navigate('/login')}>Log in</button>
-			<button onClick={() => navigate('/register')}>Register</button>
+			<button onClick={() => navigate('/login')}>Sign in</button>
+			<button onClick={() => navigate('/register')}>Sign up</button>
 		</div>
 	);
 };

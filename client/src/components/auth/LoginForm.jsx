@@ -40,13 +40,13 @@ export default function LoginForm() {
 
 	return (
 		<div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px' }}>
-			<h2>Logga in</h2>
+			<h2>Sign in</h2>
 			{error && (
 				<div style={{ color: 'red', marginBottom: '10px' }}>{error}</div>
 			)}
 			<form onSubmit={handleSubmit}>
 				<div style={{ marginBottom: '15px' }}>
-					<label>Användarnamn:</label>
+					<label>Username:</label>
 					<input
 						type='text'
 						name='username'
@@ -57,7 +57,7 @@ export default function LoginForm() {
 					/>
 				</div>
 				<div style={{ marginBottom: '15px' }}>
-					<label>Lösenord:</label>
+					<label>Password:</label>
 					<input
 						type='password'
 						name='password'
@@ -71,14 +71,14 @@ export default function LoginForm() {
 					type='submit'
 					disabled={loading}
 					style={{
-						width: '100%',
+						width: '107%',
 						padding: '10px',
 						backgroundColor: loading ? '#ccc' : '#007bff',
 						color: 'white',
 						border: 'none',
 						cursor: loading ? 'not-allowed' : 'pointer',
 					}}>
-					{loading ? 'Loggar in...' : 'Logga in'}
+					{loading ? 'Loggar in...' : 'Sign in '}
 				</button>
 			</form>
 		</div>
