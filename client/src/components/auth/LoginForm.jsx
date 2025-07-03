@@ -30,7 +30,7 @@ export default function LoginForm() {
 			});
 			localStorage.setItem('token', response.token);
 			alert('Inloggning lyckades!');
-			navigate('/'); // eller till dashboard
+			navigate('/dashboard');
 		} catch (error) {
 			setError(error.message);
 		} finally {
