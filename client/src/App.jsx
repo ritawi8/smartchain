@@ -11,7 +11,7 @@ import TransactionList from './components/dashboard/TransactionList';
 import BlockList from './components/dashboard/BlockList';
 import SendTransactionForm from './components/dashboard/SendTransactionForm';
 import MineBlock from './components/dashboard/MineBlock';
-
+import DashboardLayout from './components/layout/DashboardNavLayout';
 function App() {
 	return (
 		<Router>
@@ -19,13 +19,45 @@ function App() {
 				<Route path='/' element={<StartPage />} />
 				<Route path='/register' element={<RegisterForm />} />
 				<Route path='/login' element={<LoginForm />} />
-				<Route path='/dashboard' element={<Dashboard />} />
-				<Route path='/dashboard/transactions' element={<TransactionList />} />
-				<Route path='/dashboard/blocks' element={<BlockList />} />
-				<Route path='/dashboard/mine' element={<MineBlock />} />
+				<Route
+					path='/dashboard'
+					element={
+						<DashboardLayout>
+							<Dashboard />
+						</DashboardLayout>
+					}
+				/>
+				<Route
+					path='/dashboard/transactions'
+					element={
+						<DashboardLayout>
+							<TransactionList />
+						</DashboardLayout>
+					}
+				/>
+				<Route
+					path='/dashboard/blocks'
+					element={
+						<DashboardLayout>
+							<BlockList />
+						</DashboardLayout>
+					}
+				/>
+				<Route
+					path='/dashboard/mine'
+					element={
+						<DashboardLayout>
+							<MineBlock />
+						</DashboardLayout>
+					}
+				/>
 				<Route
 					path='/dashboard/sendtransaction'
-					element={<SendTransactionForm />}
+					element={
+						<DashboardLayout>
+							<SendTransactionForm />
+						</DashboardLayout>
+					}
 				/>
 			</Routes>
 		</Router>

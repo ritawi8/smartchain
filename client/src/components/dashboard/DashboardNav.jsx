@@ -41,6 +41,10 @@ const DashboardNav = () => (
 		</Link>
 		<span style={dividerStyle}>|</span>
 		<button
+			onClick={() => {
+				localStorage.removeItem('token');
+				window.location.href = '/login';
+			}}
 			style={{
 				color: '#8c8c8c',
 				background: 'none',

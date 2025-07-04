@@ -1,13 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import DashboardNav from '../components/dashboard/DashboardNav';
 
 const Dashboard = () => {
-	const navigate = useNavigate();
-
 	return (
 		<div>
-			<DashboardNav />
+			<h2>Welcome to your Dashboard!</h2>
+			{/* Här kan du lägga till översikt, statistik, eller vad du vill visa först */}
 		</div>
 	);
 };

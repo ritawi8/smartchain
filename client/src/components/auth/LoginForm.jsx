@@ -29,7 +29,7 @@ export default function LoginForm() {
 				password: formData.password,
 			});
 			localStorage.setItem('token', response.token);
-			alert('Inloggning lyckades!');
+			alert('Welcome!');
 			navigate('/dashboard');
 		} catch (error) {
 			setError(error.message);
@@ -71,10 +71,10 @@ export default function LoginForm() {
 					type='submit'
 					disabled={loading}
 					style={{
-						width: '107%',
+						width: '100%',
 						padding: '10px',
-						backgroundColor: loading ? '#ccc' : '#007bff',
-						color: 'white',
+						backgroundColor: 'whitesmoke',
+						color: 'black',
 						border: 'none',
 						cursor: loading ? 'not-allowed' : 'pointer',
 					}}>
