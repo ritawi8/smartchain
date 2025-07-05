@@ -28,18 +28,42 @@ const TransactionList = () => {
 	if (error) return <div style={{ color: 'red' }}>Fel: {error}</div>;
 
 	return (
-		<div>
-			<h2>Transaction List</h2>
+		<div style={{ maxWidth: '500px', margin: '3rem auto', padding: '1.5rem' }}>
+			<h2
+				style={{
+					textAlign: 'center',
+					fontWeight: 600,
+					fontSize: '2rem',
+					marginBottom: '1.2rem',
+					borderBottom: '1px solid #ccc',
+					paddingBottom: '0.3rem',
+				}}>
+				Transaction List
+			</h2>
 			{transactions.length === 0 ? (
-				<div>Inga transaktioner hittades</div>
+				<div style={{ textAlign: 'center', color: '#666', fontSize: '1.1rem' }}>
+					Inga transaktioner hittades
+				</div>
 			) : (
-				<ul>
+				<div
+					style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
 					{transactions.map((t, i) => (
-						<li key={i}>
-							{t.from} → {t.to}: {t.amount} coins
-						</li>
+						<div
+							key={i}
+							style={{
+								border: '1px solid #ddd',
+								borderRadius: '6px',
+								padding: '0.7rem 1rem',
+								fontSize: '1rem',
+								color: 'white',
+								background: 'rgba(0,0,0,0.10)',
+								textAlign: 'center',
+							}}>
+							{t.from} → {t.to}:{' '}
+							<span style={{ fontWeight: 500 }}>{t.amount} coins</span>
+						</div>
 					))}
-				</ul>
+				</div>
 			)}
 		</div>
 	);
