@@ -23,37 +23,82 @@ const MineBlock = () => {
 	};
 
 	return (
-		<div
-			style={{
-				maxWidth: 400,
-				margin: '3rem auto',
-				padding: '2rem',
-				background: 'rgba(255,255,255,0.95)',
-				borderRadius: 10,
-				textAlign: 'center',
-			}}>
-			<h2 style={{ marginBottom: '1.5rem' }}>Mine Block</h2>
-			<button
-				onClick={handleMine}
-				disabled={loading}
+		<div style={{ maxWidth: '500px', margin: '3rem auto', padding: '1.5rem' }}>
+			<h2
 				style={{
-					padding: '0.8rem 2rem',
-					borderRadius: 6,
-					border: 'none',
-					background: '#4f5bd5',
-					color: 'white',
+					textAlign: 'center',
 					fontWeight: 600,
-					fontSize: '1.1rem',
-					cursor: loading ? 'not-allowed' : 'pointer',
+					fontSize: '2rem',
+					marginBottom: '1.2rem',
+					borderBottom: '1px solid #ccc',
+					paddingBottom: '0.3rem',
+					color: '#222',
 				}}>
-				{loading ? 'Minerar...' : 'Mina nytt block'}
-			</button>
-			{result && (
-				<div style={{ color: 'green', marginTop: '1.2rem' }}>{result}</div>
-			)}
-			{error && (
-				<div style={{ color: 'red', marginTop: '1.2rem' }}>{error}</div>
-			)}
+				Mine Block
+			</h2>
+			<div
+				style={{
+					background: '#f9f9ff',
+					borderRadius: '16px',
+					boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+					padding: '2rem',
+					textAlign: 'center',
+				}}>
+				<p
+					style={{
+						fontSize: '1.1rem',
+						color: '#666',
+						marginBottom: '2rem',
+						lineHeight: '1.6',
+					}}>
+					Klicka på knappen nedan för att mina ett nytt block med alla väntande
+					transaktioner.
+				</p>
+				<button
+					onClick={handleMine}
+					disabled={loading}
+					style={{
+						padding: '1rem 2rem',
+						borderRadius: '8px',
+						border: 'none',
+						background: '#4f5bd5',
+						color: 'white',
+						fontWeight: 600,
+						fontSize: '1.1rem',
+						cursor: loading ? 'not-allowed' : 'pointer',
+						transition: 'all 0.2s ease',
+						minWidth: '200px',
+					}}>
+					{loading ? 'Minerar...' : 'Mina nytt block'}
+				</button>
+				{result && (
+					<div
+						style={{
+							color: '#27ae60',
+							background: '#d5f4e6',
+							border: '1px solid #a8e6cf',
+							borderRadius: '6px',
+							padding: '1rem',
+							marginTop: '1.5rem',
+							fontWeight: 500,
+						}}>
+						{result}
+					</div>
+				)}
+				{error && (
+					<div
+						style={{
+							color: '#e74c3c',
+							background: '#fdf2f2',
+							border: '1px solid #fecaca',
+							borderRadius: '6px',
+							padding: '1rem',
+							marginTop: '1.5rem',
+						}}>
+						{error}
+					</div>
+				)}
+			</div>
 		</div>
 	);
 };
