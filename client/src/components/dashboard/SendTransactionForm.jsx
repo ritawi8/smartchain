@@ -48,7 +48,7 @@ const SendTransactionForm = ({ onSuccess }) => {
 					marginBottom: '1.2rem',
 					borderBottom: '1px solid #ccc',
 					paddingBottom: '0.3rem',
-					color: 'white',
+					color: 'black',
 				}}>
 				Send Transaction
 			</h2>
@@ -68,7 +68,7 @@ const SendTransactionForm = ({ onSuccess }) => {
 					}}>
 					<input
 						type='text'
-						placeholder='Från'
+						placeholder='Sender'
 						value={from}
 						onChange={(e) => setFrom(e.target.value)}
 						required
@@ -81,7 +81,7 @@ const SendTransactionForm = ({ onSuccess }) => {
 					/>
 					<input
 						type='text'
-						placeholder='Till'
+						placeholder='Receiver'
 						value={to}
 						onChange={(e) => setTo(e.target.value)}
 						required
@@ -94,7 +94,7 @@ const SendTransactionForm = ({ onSuccess }) => {
 					/>
 					<input
 						type='number'
-						placeholder='Belopp'
+						placeholder='Amount'
 						value={amount}
 						onChange={(e) => setAmount(e.target.value)}
 						required
@@ -119,7 +119,7 @@ const SendTransactionForm = ({ onSuccess }) => {
 							fontSize: '1.1rem',
 							cursor: loading ? 'not-allowed' : 'pointer',
 						}}>
-						{loading ? 'Skickar...' : 'Skicka'}
+						{loading ? 'Sending...' : 'Send'}
 					</button>
 					{error && (
 						<div style={{ color: 'red', textAlign: 'center' }}>{error}</div>

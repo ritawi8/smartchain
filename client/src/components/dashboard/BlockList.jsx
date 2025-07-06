@@ -35,8 +35,9 @@ const BlockList = () => {
 					marginBottom: '1.2rem',
 					borderBottom: '1px solid #ccc',
 					paddingBottom: '0.3rem',
+					color: 'black',
 				}}>
-				Blockkedja
+				Blocks
 			</h2>
 			{blocks.length === 0 ? (
 				<div style={{ textAlign: 'center', color: '#666', fontSize: '1.1rem' }}>

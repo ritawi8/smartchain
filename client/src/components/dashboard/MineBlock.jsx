@@ -12,9 +12,8 @@ const MineBlock = () => {
 		try {
 			const response = await fetch('/api/wallet/transactions/mine');
 			const data = await response.json();
-			if (!response.ok)
-				throw new Error(data.message || 'Något gick fel vid mining');
-			setResult('Block minat! 🟢');
+			if (!response.ok) throw new Error(data.message || 'Something went wrong');
+			setResult('Block is mined! 🟢');
 		} catch (err) {
 			setError(err.message);
 		} finally {
@@ -50,10 +49,7 @@ const MineBlock = () => {
 						color: '#666',
 						marginBottom: '2rem',
 						lineHeight: '1.6',
-					}}>
-					Klicka på knappen nedan för att mina ett nytt block med alla väntande
-					transaktioner.
-				</p>
+					}}></p>
 				<button
 					onClick={handleMine}
 					disabled={loading}
@@ -69,7 +65,7 @@ const MineBlock = () => {
 						transition: 'all 0.2s ease',
 						minWidth: '200px',
 					}}>
-					{loading ? 'Minerar...' : 'Mina nytt block'}
+					{loading ? 'Mine...' : 'Mine new block'}
 				</button>
 				{result && (
 					<div

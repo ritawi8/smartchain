@@ -76,7 +76,7 @@ const TransactionList = () => {
 				{transactions.length === 0 ? (
 					<div
 						style={{ textAlign: 'center', color: '#666', fontSize: '1.1rem' }}>
-						Inga transaktioner hittades
+						No transactions
 					</div>
 				) : (
 					<div

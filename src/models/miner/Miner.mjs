@@ -11,7 +11,7 @@ export default class Miner {
 	async mine(minerAddress = 'MINER_ADDRESS') {
 		const transactions = this.transactionPool.getTransactions();
 		if (transactions.length === 0) {
-			return { error: 'Inga transaktioner att mine:a' };
+			return { error: 'No transactions to mine' };
 		}
 
 		// Skapa belöningstransaktion
