@@ -6,10 +6,7 @@ const TransactionList = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
-	console.log('TransactionList komponenten laddas!');
-
 	useEffect(() => {
-		console.log('useEffect körs!');
 		const fetchTransactions = async () => {
 			try {
 				setLoading(true);
@@ -41,8 +38,8 @@ const TransactionList = () => {
 				Transaction List
 			</h2>
 			{transactions.length === 0 ? (
-				<div style={{ textAlign: 'center', color: '#666', fontSize: '1.1rem' }}>
-					Inga transaktioner hittades
+				<div style={{ textAlign: 'center', color: '#ccc', fontSize: '1.1rem' }}>
+					No transactions found
 				</div>
 			) : (
 				<div

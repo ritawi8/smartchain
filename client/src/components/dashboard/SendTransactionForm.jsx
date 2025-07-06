@@ -48,7 +48,7 @@ const SendTransactionForm = ({ onSuccess }) => {
 					marginBottom: '1.2rem',
 					borderBottom: '1px solid #ccc',
 					paddingBottom: '0.3rem',
-					color: '#222',
+					color: 'white',
 				}}>
 				Send Transaction
 			</h2>
